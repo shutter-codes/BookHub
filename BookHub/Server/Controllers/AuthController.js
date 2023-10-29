@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken")
 const dotenv = require("dotenv")
 const { create } = require("../Models/Book")
 dotenv.config()
-const SECRET_KEY = "naitik123";
+// const SECRET_KEY = "naitik123";
 
 const Register = async(req, res) => {
     const {name, username, email, password} = req.body
@@ -54,7 +54,7 @@ const Login = async(req, res) => {
 
         const token = jwt.sign({
             id: user._id
-        }, SECRET_KEY, {});
+        }, process.env.SECRET_KEY, {});
 
         const {
             password: pass,

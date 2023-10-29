@@ -13,7 +13,7 @@ const BookRoutes = require("./Routes/BookRoutes")
 const UserRoutes = require("./Routes/UserRoutes")
 
 const app = express()
-const  MONGO_URL = "mongodb+srv://devnaitik104:Naitik123@version1.oyozghg.mongodb.net/?retryWrites=true&w=majority"
+const  MONGO_URL = process.env.MONGO_URL
 app.use(express.json())
 // use this to read form data
 app.use(express.urlencoded({ extended: true }))
@@ -49,6 +49,6 @@ app.use("/api", AuthRoutes)
 app.use("/api/books", BookRoutes)
 app.use("/api/users", UserRoutes)
 
-app.listen(5000, () => {
+app.listen(process.env.PORT, () => {
     console.log("Server running on port 5000")
 })
